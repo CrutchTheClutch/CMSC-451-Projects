@@ -1,8 +1,19 @@
+/**
+ * Filename:    BenchmarkSorts
+ * Author:      William Crutchfield
+ * Date:        9/14/2018
+ * Description: Iterative and Recursive Implementations of the InsertionSort algorithm.
+ */
 public class InsertionSort implements SortInterface {
 
     private int count;
     private long time;
 
+    /**
+     * Recursive Insertion Sort
+     * @param list to be sorted
+     * @throws UnsortedException is thrown if return list in not sorted
+     */
     @Override
     public void recursiveSort(int[] list) throws UnsortedException {
         count = 0;
@@ -20,6 +31,12 @@ public class InsertionSort implements SortInterface {
         }
     }
 
+    /**
+     * Recursive Insertion Sort Helper Method
+     * @param list to be sorted
+     * @param n list length
+     * @return sorted list
+     */
     private int[] recursive(int[] list, int n) {
         int j;
 
@@ -36,6 +53,11 @@ public class InsertionSort implements SortInterface {
         return list;
     }
 
+    /**
+     * Iterative Insertion Sort
+     * @param list to be sorted
+     * @throws UnsortedException is thrown if return list in not sorted
+     */
     @Override
     public void iterativeSort(int[] list) throws UnsortedException {
         count = 0;
@@ -63,6 +85,11 @@ public class InsertionSort implements SortInterface {
         }
     }
 
+    /**
+     * Checks if the list is sorted
+     * @param list that should be sorted
+     * @return boolean true if sorted
+     */
     private boolean isNotSorted (int[] list) {
         for (int i = 0; i < list.length - 1; i++) {
             if (list[i] <= list[i+1]) {
@@ -72,11 +99,19 @@ public class InsertionSort implements SortInterface {
         return true;
     }
 
+    /**
+     * Get sortCount
+     * @return sortCount
+     */
     @Override
     public int getCount() {
         return count;
     }
 
+    /**
+     * Get sortTime
+     * @return sortTime
+     */
     @Override
     public long getTime() {
         return time;

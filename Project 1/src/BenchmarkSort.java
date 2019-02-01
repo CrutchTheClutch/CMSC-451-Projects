@@ -1,7 +1,12 @@
 import java.util.Random;
 
-
-public class BenchmarkSorts {
+/**
+ * Filename:    BenchmarkSorts
+ * Author:      William Crutchfield
+ * Date:        9/14/2018
+ * Description: Gathers the benchmarks from the various InsertionSort operations
+ */
+class BenchmarkSorts {
 
     private InsertionSort insertionSort = new InsertionSort();
     private Random random = new Random();
@@ -24,7 +29,11 @@ public class BenchmarkSorts {
     private double[] averageRecursiveTime;
     private double[] coefficientRecursiveTime;
 
-    public BenchmarkSorts(int[] sizes) {
+    /**
+     * Gets Counts and Times for All InsertionSorts
+     * @param sizes array of list sizes to be sorted
+     */
+    BenchmarkSorts(int[] sizes) {
         dataSize = sizes;
         averageIterativeCount = new double[sizes.length];
         averageRecursiveCount = new double[sizes.length];
@@ -36,7 +45,11 @@ public class BenchmarkSorts {
         coefficientRecursiveTime = new double[sizes.length];
     }
 
-    public void runSorts() throws UnsortedException {
+    /**
+     * Creates all data to be sorted
+     * @throws UnsortedException is thrown if return list in not sorted
+     */
+    void runSorts() throws UnsortedException {
 
         for (int i = 0; i < dataSize.length; i++) {
             int[] iterativeData = new int[dataSize[i]];
@@ -69,6 +82,11 @@ public class BenchmarkSorts {
         }
     }
 
+    /**
+     * Gets Mean of the data
+     * @param data list that is sorted
+     * @return Mean of data
+     */
     private double getMean(double[] data) {
         double sum = 0;
         for (double aData : data) {
@@ -77,6 +95,11 @@ public class BenchmarkSorts {
         return sum / data.length;
     }
 
+    /**
+     * Gets StandardDeviation of the data
+     * @param data list that is sorted
+     * @return StandardDeviation of the data
+     */
     private double getStandardDeviation(double[] data) {
         double sum = 0;
         for (double aData : data) {
@@ -85,11 +108,19 @@ public class BenchmarkSorts {
         return Math.sqrt(sum / (data.length - 1));
     }
 
+    /**
+     * Gets CoefficientOfVariance of data
+     * @param data list that is sorted
+     * @return CoefficientOfVariance of the data
+     */
     private double getCoefficientOfVariance(double[] data) {
         return ((getStandardDeviation(data)) / getMean(data)) * 100;
     }
 
-    public void displayReport() {
+    /**
+     * Displays the benchmark data in the console
+     */
+    void displayReport() {
         System.out.format("%213s", "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println();
         System.out.format("%13s %100s %100s", "\t  |", "\t  Iterative", "\t  Recursive");
